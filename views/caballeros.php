@@ -12,7 +12,7 @@
         font-family: 'Times New Roman', Times, serif; ">
      <h1><strong> De todo para hombres</strong></h1>
      <p style="color: rgb(119, 13, 180);">Nuestras prendas más populares en función de las ventas. Atualizado
-         frecuentemente.</p>
+         frecuentemente.eeeeeeeeeeeeee</p>
  </div>
 
 
