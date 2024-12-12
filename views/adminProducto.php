@@ -18,6 +18,7 @@
                 <th>Nro</th>
                 <th>Codigo</th>
                 <th>Nombre</th>
+                <th>Detalle</th>
                 <th>Stock</th>
                 <th>Categoria</th>
                 <th>Proveedor</th>

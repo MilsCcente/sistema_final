@@ -13,6 +13,7 @@ async function listar_productos() {
                 <th>${cont}</th>
                 <td>${item.codigo}</td>
                 <td>${item.nombre}</td>
+                <td>${item.detalle}</td>
                 <td>${item.stock}</td>
                 <td>${item.categoria.nombre}</td>
                 <td>${item.proveedor.razon_social}</td>
