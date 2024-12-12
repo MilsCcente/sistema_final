@@ -220,7 +220,7 @@ async function fnt_eliminar(id) {
         let json = await respuesta.json();
 
         if (json.status) {
-            swal("Eliminar", json.message, "success");
+            swal("Eliminar", json.message || "Eliminado correctamente", "success");
             document.querySelector('#fila' + id).remove();
         } else {
             swal("Eliminar", json.message, "warning");
