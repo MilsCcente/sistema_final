@@ -225,7 +225,7 @@ async function fnt_eliminar(id) {
 
         if (json.status) {
             swal("Eliminar", "eliminado correctamente", "success");
-            document.querySelector('#fila_' + id).remove();
+            document.querySelector('#fila' + id).remove();
 
         } else {
             swal('Eliminar', 'Error al eliminar producto', 'warning');
