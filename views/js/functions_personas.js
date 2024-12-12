@@ -39,7 +39,7 @@ if (document.querySelector('#tbl_proveedor')) {
 
 async function listar_usuarios() {
     try {
-        let respuesta = await fetch(base_url+'controller/Personas.php?tipo=listar_usuarios');
+        let respuesta = await fetch(base_url+'controller/Personas.php?tipo=listarUsuarios');
         let json = await respuesta.json();
         if (json.status) {
             let datos = json.contenido;

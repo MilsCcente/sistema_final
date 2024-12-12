@@ -23,7 +23,7 @@ if ($tipo == "listar") {
 
     echo json_encode($arr_Respuestas);
 }
-if ($tipo == "listar_usuarios") {
+if ($tipo == "listarUsuarios") {
     $arr_Respuestas = array('status' => false, 'contenido' => '');
 
     $arr_usuarios = $objPersona->obtener_usuario();
