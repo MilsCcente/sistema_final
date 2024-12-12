@@ -221,7 +221,7 @@ async function fnt_eliminar(id) {
 
         if (json.status) {
             swal("Eliminar", json.message, "success");
-            document.querySelector('#fila_' + id).remove();
+            document.querySelector('#fila' + id).remove();
         } else {
             swal("Eliminar", json.message, "warning");
         }
