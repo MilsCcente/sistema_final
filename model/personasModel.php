@@ -34,7 +34,7 @@ class personasModel
         return $proveedores;
     }
     public function obtener_usuario() {
-        $respuesta = $this->conexion->query("SELECT * FROM persona WHERE estado = '1'");
+        $respuesta = $this->conexion->query("SELECT * FROM persona");
         $usuario = [];
         while ($row = $respuesta->fetch_object()) {
             $usuario[] = $row;
