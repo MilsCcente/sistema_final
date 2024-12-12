@@ -82,7 +82,7 @@
         </div>
 
         <div class="card">
-        <a href="<?php echo BASE_URL ?>adminCompras">
+        <a href="<?php echo BASE_URL ?>adminCategoria">
             <div class="card-icon">📂</div>
             <div class="card-title">Categorías</div>
             <div class="card-description">Organiza los productos en categorías específicas.</div>
@@ -90,7 +90,7 @@
         </div>
 
         <div class="card">
-        <a href="<?php echo BASE_URL ?>adminCategoria">
+        <a href="<?php echo BASE_URL ?>adminCompras">
             <div class="card-icon">🛒</div>
             <div class="card-title">Compras</div>
             <div class="card-description">Gestiona las compras y proveedores del sistema.</div>
