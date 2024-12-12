@@ -1,6 +1,6 @@
 async function listar_proveedor() {
     try {
-        let respuesta = await fetch(base_url+'controller/Personas.php?tipo=listar');
+        let respuesta = await fetch(base_url+'controller/personas.php?tipo=listar');
         let json = await respuesta.json();
         if (json.status) {
             let datos = json.contenido;
@@ -39,7 +39,7 @@ if (document.querySelector('#tbl_proveedor')) {
 
 async function listar_usuarios() {
     try {
-        let respuesta = await fetch(base_url+'controller/Personas.php?tipo=listarUsuarios');
+        let respuesta = await fetch(base_url+'controller/personas.php?tipo=listarUsuarios');
         let json = await respuesta.json();
         if (json.status) {
             let datos = json.contenido;
@@ -101,7 +101,7 @@ async function registrar_personas() {
     try {
         // Capturamos los datos del formulario HTML
         const datos = new FormData(document.getElementById('RegistrarPersona'));
-        let respuesta = await fetch(base_url + 'controller/Personas.php?tipo=registrar', {
+        let respuesta = await fetch(base_url + 'controller/personas.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
