@@ -30,22 +30,19 @@ if ($tipo == "listar") {
             //localhost/eliminar-producto/4
 
             $id_producto = $arr_productos[$i]->id;
-        
-            //eliminar producto(1)
-            $opciones ='<a href="'.BASE_URL.'editar-producto/'.$id_producto.'" class="btn btn-warning">Editar<a/>
-            <button onclick ="eliminarProducto('.$id_producto.');" class="btn btn-danger">Eliminar</button>';
-           
-            $arr_productos[$i]->options =  $opciones;
-            
 
-            
-        }               
-           $arr_Respuesta['status'] = true;
-        $arr_Respuesta['contenido'] = $arr_productos;   
+            //eliminar producto(1)
+            $opciones = '<a href="' . BASE_URL . 'editar-producto/' . $id_producto . '" class="btn btn-warning">Editar<a/>
+            <button onclick ="eliminarProducto(' . $id_producto . ');" class="btn btn-danger">Eliminar</button>';
+
+            $arr_productos[$i]->options =  $opciones;
         }
-      echo json_encode($arr_Respuesta);
+        $arr_Respuesta['status'] = true;
+        $arr_Respuesta['contenido'] = $arr_productos;
     }
-   
+    echo json_encode($arr_Respuesta);
+}
+
 if ($tipo == "registrar") {
     //print_r($_POST);
     //echo $_FILES['imagen']['name'];
@@ -64,12 +61,14 @@ if ($tipo == "registrar") {
             //respuesta
             $arr_Respuestas = array('status' => false, 'mensaje' => 'error,campos vacios');
         } else {
-            
-                //cargar archivos
+
+            //cargar archivos
             $archivo = $_FILES['imagen']['tmp_name'];
             $destino = '../assets/img_productos/';
             $tipoArchivo = strtolower(pathinfo(
-                $_FILES["imagen"]['name'], PATHINFO_EXTENSION));
+                $_FILES["imagen"]['name'],
+                PATHINFO_EXTENSION
+            ));
 
             $arrProducto = $objProducto->registrarProducto($codigo, $nombre, $detalle, $precio, $stock, $categoria, $fecha_v, $imagen, $proveedor, $tipoArchivo);
 
@@ -78,7 +77,7 @@ if ($tipo == "registrar") {
                 $arr_Respuestas = array('status' => true, 'mensaje' => 'Registro Exitoso');
 
 
-                $nombre = $arrProducto->id_n.".".$tipoArchivo;
+                $nombre = $arrProducto->id_n . "." . $tipoArchivo;
 
                 if (move_uploaded_file($archivo, $destino . '' . $nombre)) {
                 } else {
@@ -93,15 +92,14 @@ if ($tipo == "registrar") {
 }
 
 
-if($tipo =="ver"){
+if ($tipo == "ver") {
     //print_r($_POST);
     $id_producto = $_POST['id_producto'];
     $arr_Respuesta = $objProducto->VerProducto($id_producto);
     //print_r($arr_Respuesta);
-    if (empty($arr_Respuesta)){
+    if (empty($arr_Respuesta)) {
         $response = array('status' => false, 'mensaje' => 'Error, no hay informacion');
-
-    }else{
+    } else {
         $response = array('status' => true, 'mensaje' => "datos encontrados", 'contenido' => $arr_Respuesta);
     }
     echo json_encode($response);
@@ -144,16 +142,23 @@ if ($tipo == "actualizar") {
 }
 
 
-if ($tipo =="eliminar"){
-        $id_producto = $_POST['id_producto'];
-        $arr_Respuesta = $objProducto->eliminarProducto($id_producto);
-        //print_r($arr_Respuesta);
-        if (empty($arr_Respuesta)){
-            $response = array('status' => false);
-    
-        }else{
-            $response = array('status' => true);
-        }
-        echo json_encode($response);
-    }
 
+if ($tipo == "eliminar") {
+    $id_producto = $_POST['id_producto'];
+    try {
+        $arr_Respuesta = $objProducto->eliminarProducto($id_producto);
+        if (empty($arr_Respuesta)) {
+            $response = array('status' => false, 'message' => 'Error al eliminar el producto, esta vinculado con usuario');
+        } else {
+            $response = array('status' => true, 'message' => 'producto eliminado correctamente.');
+        }
+    } catch (PDOException $e) {
+        // Capturar error de clave foránea
+        if ($e->getCode() == 23000) { // Código de error de MySQL para restricción de clave foránea
+            $response = array('status' => false, 'message' => 'No se puede eliminar el producto porque está siendo utilizada.');
+        } else {
+            $response = array('status' => false, 'message' => 'Ocurrió un error inesperado: ' . $e->getMessage());
+        }
+    }
+    echo json_encode($response);
+}

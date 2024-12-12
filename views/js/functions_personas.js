@@ -194,6 +194,9 @@ async function actualizar_persona() {
     
 
 }
+
+
+
 async function fnt_eliminar(id) {
     const formdata = new FormData();
     formdata.append('id_persona', id);
@@ -204,16 +207,16 @@ async function fnt_eliminar(id) {
             cache: 'no-cache',
             body: formdata
         });
-        json = await respuesta.json();
+        let json = await respuesta.json();
 
         if (json.status) {
-            swal("Eliminar", "eliminado correctamente", "success");
+            swal("Eliminar", json.message, "success");
             document.querySelector('#fila_' + id).remove();
-
         } else {
-            swal('Eliminar', 'Error al eliminar producto', 'warning');
+            swal("Eliminar", json.message, "warning");
         }
     } catch (e) {
-        console.log("ocurrio un error " + e);
+        console.log("Ocurrió un error: " + e);
+        swal("Eliminar", "No se puede eliminar por que este dato esta vinculado con otro registro.", "error");
     }
 }

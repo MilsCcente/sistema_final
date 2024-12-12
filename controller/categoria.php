@@ -87,16 +87,25 @@ if($tipo =="ver"){
 
 
 
- if ($tipo =="eliminar"){
-    $id_categoria = $_POST['id_categoria'];
-    $arr_Respuesta = $objCategoria->eliminarCategoria($id_categoria);
-    //print_r($arr_Respuesta);
-    if (empty($arr_Respuesta)){
-        $response = array('status' => false);
 
-    }else{
-        $response = array('status' => true);
+if ($tipo == "eliminar") {
+    $id_categoria = $_POST['id_categoria'];
+    try {
+        $arr_Respuesta = $objCategoria->eliminarCategoria($id_categoria);
+        if (empty($arr_Respuesta)) {
+            $response = array('status' => false, 'message' => 'Error al eliminar la categoría, esta vinculado con usuario');
+        } else {
+            $response = array('status' => true, 'message' => 'Categoría eliminada correctamente.');
+        }
+    } catch (PDOException $e) {
+        // Capturar error de clave foránea
+        if ($e->getCode() == 23000) { // Código de error de MySQL para restricción de clave foránea
+            $response = array('status' => false, 'message' => 'No se puede eliminar la categoría porque está siendo utilizada.');
+        } else {
+            $response = array('status' => false, 'message' => 'Ocurrió un error inesperado: ' . $e->getMessage());
+        }
     }
     echo json_encode($response);
 }
+
 ?>

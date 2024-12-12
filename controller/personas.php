@@ -151,15 +151,27 @@ if ($tipo == "actualizar") {
 
 
 
-if ($tipo =="eliminar"){
-    $id_persona = $_POST['id_persona'];
-    $arr_Respuesta = $objPersona->eliminarPersona($id_persona);
-    //print_r($arr_Respuesta);
-    if (empty($arr_Respuesta)){
-        $response = array('status' => false);
 
-    }else{
-        $response = array('status' => true);
+
+
+
+
+if ($tipo == "eliminar") {
+    $id_persona = $_POST['id_persona'];
+    try {
+        $arr_Respuesta = $objPersona->eliminarPersona($id_persona);
+        if (empty($arr_Respuesta)) {
+            $response = array('status' => false, 'message' => 'Error al eliminar el usuario, esta vinculado con usuario');
+        } else {
+            $response = array('status' => true, 'message' => 'usuario eliminado correctamente.');
+        }
+    } catch (PDOException $e) {
+        // Capturar error de clave foránea
+        if ($e->getCode() == 23000) { // Código de error de MySQL para restricción de clave foránea
+            $response = array('status' => false, 'message' => 'No se puede eliminar el usuario porque está siendo utilizada.');
+        } else {
+            $response = array('status' => false, 'message' => 'Ocurrió un error inesperado: ' . $e->getMessage());
+        }
     }
     echo json_encode($response);
 }
