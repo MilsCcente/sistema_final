@@ -100,7 +100,7 @@ async function registrar_personas() {
 
     try {
         // Capturamos los datos del formulario HTML
-        const datos = new FormData(document.getElementById('RegistrarPersona'));
+        const datos = new FormData(document.getElementById('registrarPersona'));
         let respuesta = await fetch(base_url + 'controller/personas.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',

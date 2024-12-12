@@ -108,7 +108,7 @@
 <body>
     
     <div class="form-container">
-        <form class="form" action="" id="RegistrarPersona">
+        <form class="form" action="" id="registrarPersona">
             <h2>Registrar Persona</h2>
             <div class="form-row">
                 <div class="form-col">
