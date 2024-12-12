@@ -18,7 +18,7 @@ async function iniciar_sesion() {
         json = await respuesta.json();
         if (json.status) {
             //swal("iniciar_sesion", json.mensaje, "success");
-            location.replace(base_url+'adminProducto');
+            location.replace(base_url+'vista');
         } else {
             swal("iniciar_sesion", json.mensaje, "error");
 

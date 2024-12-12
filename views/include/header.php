@@ -64,7 +64,9 @@
         /* Botón de cerrar sesión */
         .logout {
             margin-top: 20px;
+            margin-left: 15px;
             text-align: center;
+            width: 200px;
         }
 
         .logout a {
@@ -88,6 +90,7 @@
             margin-left: 250px;
             padding: 20px;
         }
+        
     </style>
 </head>
 
@@ -96,7 +99,7 @@
 <div class="d-flex"></div>
     <nav>
         <ul>
-            <li><a href="#">Inicio</a></li>
+            <li><a href="<?php echo BASE_URL ?>vista">Inicio</a></li>
             <li><a href="<?php echo BASE_URL ?>adminProducto">Productos</a></li>
             <li><a href="<?php echo BASE_URL ?>adminCompras">Compras</a></li>
             <li><a href="<?php echo BASE_URL ?>adminCategoria">Categoria</a></li>

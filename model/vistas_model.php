@@ -35,7 +35,8 @@ class vistaModelo
             'editar-producto',
             'editar-categoria',
             'editar-compra',
-            'editar-usuario'
+            'editar-usuario',
+            'vista'
         ];
 
         if (!isset($_SESSION['sesion_ventas_id'])) {
