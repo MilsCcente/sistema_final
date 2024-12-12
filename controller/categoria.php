@@ -49,7 +49,7 @@ if($tipo=="registrar"){
 if($tipo =="ver"){
      //print_r($_POST);
      $id_categoria = $_POST['id_categoria'];
-     $arr_Respuesta = $objRCategoria->ver_categoria($id_categoria);
+     $arr_Respuesta = $objCategoria->obtener_categoria($id_categoria);
      //print_r($arr_Respuesta);
      if (empty($arr_Respuesta)){
          $response = array('status' => false, 'mensaje' => 'Error, no hay informacion');
@@ -60,9 +60,32 @@ if($tipo =="ver"){
      }
      echo json_encode($response);
  }
- if($tipo =="actualizar"){
-     # code..
- }
+
+
+
+ if ($tipo == "actualizar") {
+    //print_r($_POST);
+    //print_r($_FILES['imagen']['tmp_name']);
+    $id_categoria = $_POST['id_categoria'];
+    $nombre  = $_POST['nombre'];
+    $detalle  = $_POST['detalle'];
+  
+
+    if ($nombre == "" || $detalle == "") {
+        $arr_Respuestas = array('status' => false, 'mensaje' => 'error campos vacios');
+    } else {
+        $arrCategoria = $objCategoria->actualizarCategoria($id_categoria, $nombre, $detalle);
+        if ($arrCategoria->p_id > 0) {
+            $arr_Respuestas = array('status' => true, 'mensaje' => 'actualizacion Exitoso');
+
+        } else {
+            $arr_Respuestas = array('status' => false, 'mensaje' => 'Error al actualizar Categoria');
+        }
+    }
+    echo json_encode($arr_Respuestas);
+}   
+
+
 
  if ($tipo =="eliminar"){
     $id_categoria = $_POST['id_categoria'];

@@ -115,7 +115,57 @@ if (document.querySelector('#tbl_compras')) {
 }
 
 
+async function editar_compra(id) {
+    const formData = new FormData();
+    formData.append('id_compra', id);
+    try {
+        let respuesta = await fetch(base_url + 'controller/compra.php?tipo=ver',{
+            method: 'POST',
+            mode:'cors',
+            cache: 'no-cache',
+            body: formData
+        });
+        json = await respuesta.json();
+        if (json.status) {
+            document.querySelector('#id_compra').value = json.contenido.id;
+            document.querySelector('#id_producto').value = json.contenido.id_producto;
+            document.querySelector('#cantidad').value = json.contenido.cantidad;
+            document.querySelector('#precio').value = json.contenido.precio;
+            document.querySelector('#fecha_compra').value = json.contenido.fecha_compra;
+            document.querySelector('#id_trabajador').value = json.contenido.id_trabajador;
+          }else{
+            window.location= base_url+"ver-compras";
+        }
+        console.log(json);
+    } catch (error) {
+        console.log("opp ocurrio un error"+error)
+    }
+}
 
+async function actualizar_compra() {
+    const datos = new FormData(frmActualizar);
+    try{
+        
+        let respuesta = await fetch(base_url+'controller/compra.php?tipo=actualizar',{
+            method: 'POST', 
+            mode: 'cors',
+            cache:'no-cache',
+            body: datos
+        });
+        json = await respuesta.json();
+        if (json.status) {
+            swal("Actualizacion",json.mensaje,"success");
+        }else{
+            swal("Actualizacion",json.mensaje,"error");
+        }
+    
+        console.log(json);
+    }catch(e){
+       
+    }
+    
+
+}
 
 
 

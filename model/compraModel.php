@@ -32,11 +32,19 @@ class RegistrarComprasModel {
         return $sql;
 
       }
+      public function ver_compra($id){
+        $respuesta = $this->conexion->query("SELECT * FROM compras WHERE id  = '$id'");
+        $objeto = $respuesta->fetch_object();
+        return $objeto;
+      }
 
-
-
-
+      public function actualizarCompra($id, $id_producto, $cantidad, $precio, $fecha_compra, $id_trabajador){
+        $sql = $this->conexion->query("CALL updateCompras('{$id}','{$id_producto}','{$cantidad}','{$precio}','{$fecha_compra}','{$id_trabajador}')");
+        $sql = $sql->fetch_object();
+        return $sql;
+    }
 }
+
 
 
 ?>

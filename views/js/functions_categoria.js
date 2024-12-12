@@ -33,7 +33,7 @@ async function registrar_categorias() {
 
 async function listar_categoria() {
     try {
-        let respuesta = await fetch(base_url + 'controller/Categoria.php?tipo=listar');
+        let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=listar');
         let json = await respuesta.json();
         if (json.status) {
             let datos = json.contenido;
@@ -144,7 +144,7 @@ async function editar_categoria(id) {
         });
         json = await respuesta.json();
         if (json.status) {
-            
+            document.querySelector('#id_categoria').value = json.contenido.id;
             document.querySelector('#nombre').value = json.contenido.nombre;
             document.querySelector('#detalle').value = json.contenido.detalle;
            
@@ -162,6 +162,33 @@ async function editar_categoria(id) {
     }
     
 }
+
+async function actualizar_categoria() {
+    const datos = new FormData(frmActualizar);
+    try {
+
+        let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=actualizar', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: datos
+        });
+        json = await respuesta.json();
+        if (json.status) {
+            swal("Registro", json.mensaje, "success")
+        } else {
+            swal("Registro", json.mensaje, "error")
+
+        }
+        console.log(json);
+    } catch (e) {
+        console.log("Oops ocurrio un error" + e)
+    }
+
+
+}
+
+
 
 
 

@@ -89,7 +89,8 @@
 
 <body>
     <div class="form-container">
-        <form class="form" action="" id="frmRegistrarCategoria">
+        <form class="form" action="" id="frmActualizar">
+        <input type="hidden" name ="id_categoria" id="id_categoria">
             <h2>Editar Categorias</h2>
             <div>
                 <label for="nombre">Nombre</label>
@@ -100,7 +101,7 @@
                 <input type="text" id="detalle" name="detalle" placeholder="Detalle" required>
             </div>
 
-            <button type="button" class="button" onclick="registrar_categorias();">Actualizar</button>
+            <button type="button" class="button" onclick="actualizar_categoria();">Actualizar</button>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         </form>
     </div>

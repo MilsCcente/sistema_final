@@ -146,14 +146,15 @@ async function ver_producto(id) {
         });
         json = await respuesta.json();
         if (json.status) {
+            document.querySelector('#id_producto').value = json.contenido.id;
             document.querySelector('#codigo').value = json.contenido.codigo;
             document.querySelector('#nombre').value = json.contenido.nombre;
             document.querySelector('#detalle').value = json.contenido.detalle;
             document.querySelector('#precio').value = json.contenido.precio;
             document.querySelector('#categoria').value = json.contenido.id_categoria;
-            document.querySelector('#fecha_v').value = json.contenido.fecha_v;
+            document.querySelector('#fecha_v').value = json.contenido.fecha_vencimiento;
             document.querySelector('#proveedor').value = json.contenido.id_proveedor;
-            document.querySelector('#img').value = json.contenido.img;
+            document.querySelector('#img').value = json.contenido.imagen;
 
 
         } else {
