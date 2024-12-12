@@ -89,7 +89,7 @@
 
 <body>
     <div class="form-container">
-        <form class="form" action="" id="RegistrarCategoria">
+        <form class="form" action="" id="frmRegistrarCategoria">
             <h2>Registrar Categorias</h2>
             <div>
                 <label for="nombre">Nombre</label>

@@ -11,9 +11,9 @@ if ($tipo=="listar") {
      if (!empty($arr_Categorias)) {
           for ($i=0; $i <count($arr_Categorias); $i++) {
                $id_categoria = $arr_Categorias[$i]->id;
-               $id_categoria = $arr_Categorias[$i]->nombre;
-               $opciones = '<a href="'.BASE_URL.'editar-categoria/'.$id_categoria.'" >Editar<a/>
-            <button onclick ="eliminar_categoria('.$id_categoria.');">Eliminar</button>';
+               $nombre = $arr_Categorias[$i]->nombre;
+               $opciones = '<a href="'.BASE_URL.'editar-categoria/'.$id_categoria.'" class="btn btn-warning">Editar<a/>
+            <button onclick ="eliminarCategorias('.$id_categoria.');" class="btn btn-danger">Eliminar</button>';
                $arr_Categorias[$i]->options =  $opciones;
           }
           $arr_Respuesta['status'] = true;
@@ -22,7 +22,6 @@ if ($tipo=="listar") {
      echo json_encode($arr_Respuesta);
 }
 
-$objRCategoria= new RCategoriaModel();
 if($tipo=="registrar"){
     if($_POST){
     
@@ -33,8 +32,7 @@ if($tipo=="registrar"){
         if ( $nombre=="" || $detalle=="") {
             $arr_Respuestas =array ('status'=>false,'mensaje'=>'error,campos vacios');
            } else{
-                $arrRCategoria =$objRCategoria-> registrarCategorias
-                ($nombre,$detalle);
+                $arrRCategoria =$objCategoria-> registrarCategorias($nombre,$detalle);
 
       if ($arrRCategoria->id>0){
                $arr_Respuestas = array('status'=>true,'mensaje'=>'Registro Exitoso');
@@ -65,8 +63,17 @@ if($tipo =="ver"){
  if($tipo =="actualizar"){
      # code..
  }
- 
+
  if ($tipo =="eliminar"){
-     # code...
- }
+    $id_categoria = $_POST['id_categoria'];
+    $arr_Respuesta = $objCategoria->eliminarCategoria($id_categoria);
+    //print_r($arr_Respuesta);
+    if (empty($arr_Respuesta)){
+        $response = array('status' => false);
+
+    }else{
+        $response = array('status' => true);
+    }
+    echo json_encode($response);
+}
 ?>

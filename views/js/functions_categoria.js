@@ -8,7 +8,7 @@ async function registrar_categorias() {
     }
     try {
         const datos = new FormData(frmRegistrarCategoria);
-        let respuesta = await fetch(base_url + 'controller/registrar_categoria.php?tipo=registrar', {
+        let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -161,4 +161,45 @@ async function editar_categoria(id) {
         console.log("Oops, ocurrio un error" +error);
     }
     
+}
+
+
+
+//eliminar producto
+async function eliminarCategorias(id) {
+    swal({
+        title: "¿Realmente desea eliminar categoria?",
+        text: "no podras recuperarlo" ,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            fnt_eliminar(id);
+        }
+    })
+}
+
+async function fnt_eliminar(id) {
+    const formdata = new FormData();
+    formdata.append('id_categoria', id);
+    try {
+        let respuesta = await fetch(base_url + 'controller/categoria.php?tipo=eliminar', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: formdata
+        });
+        json = await respuesta.json();
+
+        if (json.status) {
+            swal("Eliminar", "eliminado correctamente", "success");
+            document.querySelector('#fila_' + id).remove();
+
+        } else {
+            swal('Eliminar', 'Error al eliminar', 'warning');
+        }
+    } catch (e) {
+        console.log("ocurrio un error " + e);
+    }
 }

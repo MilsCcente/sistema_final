@@ -1,4 +1,4 @@
-async function registrar_compras() {
+async function registrar_compra() {
     let producto = document.querySelector('#id_producto').value;
     let cantidad = document.querySelector('#cantidad').value;
     let precio = document.querySelector('#precio').value;
@@ -15,7 +15,7 @@ async function registrar_compras() {
         const datos = new FormData(frmRegistrarCompra);
 
         // Enviar datos hacia el controlador
-        let respuesta = await fetch(base_url + 'controller/Compra.php?tipo=registrar', {
+        let respuesta = await fetch(base_url + 'controller/compra.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -99,7 +99,7 @@ async function ver_compras() {
                 <td>${item.precio}</td>
                 <td>${item.fecha_compra}</td>
                 <td>${item.trabajador.razon_social}</td>
-                <td></td>`;
+                <td>${item.options}</td>`;
 
                 document.querySelector('#tbl_compras').appendChild(nueva_fila)
             });
@@ -112,4 +112,49 @@ async function ver_compras() {
 
 if (document.querySelector('#tbl_compras')) {
     ver_compras();
+}
+
+
+
+
+
+
+//eliminar compra 
+async function eliminarcompra(id) {
+    swal({
+        title: "¿Realmente desea eliminar la compra?",
+        text: "" ,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            fnt_eliminar(id);
+        }
+    })
+}
+
+
+async function fnt_eliminar(id) {
+    const formdata = new FormData();
+    formdata.append('id_compra', id);
+    try {
+        let respuesta = await fetch(base_url + 'controller/compra.php?tipo=eliminar', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: formdata
+        });
+        json = await respuesta.json();
+
+        if (json.status) {
+            swal("Eliminar", "eliminado correctamente", "success");
+            document.querySelector('#fila_' + id).remove();
+
+        } else {
+            swal('Eliminar', 'Error al eliminar', 'warning');
+        }
+    } catch (e) {
+        console.log("ocurrio un error " + e);
+    }
 }

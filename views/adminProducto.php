@@ -1,5 +1,18 @@
+<div>
+    <center>
+    <h1>lista de productos registrados</h1> 
+    </center>
+
+</div>
+<div>
+<a href="<?php echo BASE_URL ?>nuevo-producto" class="btn btn-info">Agregar producto</a>
+</div>
 <div class="col-12">
-    <table border ="1" class="table" style="width: 100%;" >
+
+
+
+
+    <table border ="1" class="table m-5" style="width: 100%;" >
         <thead>
             <tr>
                 <th>Nro</th>

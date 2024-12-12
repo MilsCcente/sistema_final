@@ -4,117 +4,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <!--BARRA-->
+    <title>Administracion</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>/views/plantilla/estilos.css">
-    <!--BARRA-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        const base_url = '<?php echo BASE_URL ?>';
+        const base_url = '<?php echo BASE_URL ?>'
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Contenedor del menú */
+        nav {
+            background-color: #333;
+            width: 250px;
+            height: 100vh;
+            padding-top: 20px;
+            box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        /* Lista del menú */
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Elementos del menú */
+        ul li {
+            margin: 15px 0;
+        }
+
+        /* Enlaces del menú */
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        ul li a:hover {
+            background-color: #575757;
+            color: #ffcc00;
+            border-radius: 5px;
+            transform: scale(1.05);
+        }
+
+        /* Botón de cerrar sesión */
+        .logout {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .logout a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #d9534f;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .logout a:hover {
+            background-color: #c9302c;
+            transform: scale(1.05);
+        }
+
+        /* Contenido principal */
+        main {
+            margin-left: 250px;
+            padding: 20px;
+        }
+    </style>
 </head>
 
-<body style="background-color: #F4E5FF;">
-    <div class="container-fluid p-0">
-        <!--BARRA -->
+<body>
 
-        <!--BARRA 2-->
-        <nav class="navbar navbar-expand-lg" style="background-color: #b040f1;" data-bs-theme="dark">
-            <div class="container-fluid">
+<div class="d-flex"></div>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="<?php echo BASE_URL ?>adminProducto">Productos</a></li>
+            <li><a href="<?php echo BASE_URL ?>adminCompras">Compras</a></li>
+            <li><a href="<?php echo BASE_URL ?>adminCategoria">Categoria</a></li>
+            <li><a href="<?php echo BASE_URL ?>adminUsuario">Usuarios</a></li>
 
-                <a class="navbar-brand" href="#">
-                    <img src="./views/plantilla/IMG/mils.png" alt="Bootstrap" width="80" height="60">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"
-                            style="background: #c87ef3;margin-left: 70px; margin-right: 70px;font-size: 17px; border-radius: 10px;">
-                            <a class="nav-link" aria-current="page" href="<?php echo BASE_URL ?>productos">Inicio</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                style="background: #c87ef3;margin-right: 70px;font-size: 17px; border-radius: 10px;">
-                                Categorias </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?php echo BASE_URL ?>damas">Damas</a></li>
-                                <li><a class="dropdown-item" href="<?php echo BASE_URL ?>caballeros">Caballeros</a></li>
-                                <li><a class="dropdown-item" href="<?php echo BASE_URL ?>niñosyniñas">Niños y Niñas</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                style="background: #c87ef3; margin-right: 70px; font-size: 17px; border-radius: 10px;"
-                                href="<?php echo BASE_URL ?>lomasvendido">Lo mas vendido</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                style="background: #c87ef3; margin-right: 70px; font-size: 17px;border-radius: 10px;"
-                                href="<?php echo BASE_URL ?>promociones">Promociones</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                style="background: #c87ef3;margin-right: 70px; font-size: 17px;border-radius: 10px;"
-                                href="<?php echo BASE_URL ?>conocenos">Conocenos</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                style="background: #c87ef3;margin-right: 70px; font-size: 17px;border-radius: 10px;"
-                                href="<?php echo BASE_URL ?>calificaciones">Calificaciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                style="background: #c87ef3;margin-right: 70px;font-size: 17px; border-radius: 10px;"
-                                href="<?php echo BASE_URL ?>historial">Historia</a>
-                        </li>
-
-                    </ul>
-                    <!--BUSCAR-->
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-4" type="search" placeholder="Buscar Información"
-                            aria-label="Search" style="background-color: #c680ee;">
-                        <button class="btn btn-outline-success" type="submit"
-                            style="background-color: #c786fc;">Buscar</button>
+        </ul>
+        <div class="logout">
+            <a class="nav-link mt-4" onclick="cerrar_sesion();" style="background-color: #ca0a0b">
+                <i class="nav-icon fas fa-door-closed"></i>
+                <p>
+                    Cerrar Sesión
+                </p>
+            </a>
+        </div>
+    </nav>
 
 
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a href="<?php echo BASE_URL ?>carrito"><img src="./views/plantilla/IMG/carrito-removebg-preview.png" alt="50"
-                                        height="60"></a>
-                            </li>
-                            <!--despegable de usuario-->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" style="margin-right: 80px;" href="" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false"><?php echo 'Hola, ' . $_SESSION['sesion_ventas_nombres'] ?></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>perfilUsuario">Perfil</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>carrito">Carrito</a style="background-color: #c786fc;"></li>
-                                    <li><a class="dropdown-item" href="<?php echo BASE_URL ?>favoritosUsuarios">Mis Favoritos</a></li>
-                                    <li><a class="dropdown-item" onclick="cerrar_sesion();">Cerrar Sesión</a 
-                                    style="background-color: #c786fc;"></li>
-                                    
+    <main>
 
-
-
-                                </ul>
-                            </li>
-
-                        </ul>
-
-                    </form>
-                    <!--BUSCAR-->
-
-                </div>
-            </div>
-        </nav>
+  

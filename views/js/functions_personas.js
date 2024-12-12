@@ -21,7 +21,7 @@ async function listar_proveedor() {
                 <td>${item.cod_postal}</td>
                 <td>${item.direccion}</td>
                 <td>${item.rol}</td>
-                <td></td>`;
+                <td>${item.options}</td>`;
 
                 document.querySelector('#tbl_proveedor').appendChild(nueva_fila)
             });
@@ -60,7 +60,7 @@ async function listar_usuarios() {
                 <td>${item.cod_postal}</td>
                 <td>${item.direccion}</td>
                 <td>${item.rol}</td>
-                <td></td>`;
+                <td>${item.options}</td>`;
 
                 document.querySelector('#tbl_usuario').appendChild(nueva_fila)
             });

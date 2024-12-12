@@ -89,7 +89,7 @@
 
 <body>
     <div class="form-container">
-        <form class="form" action="" id="RegistrarCompra">
+        <form class="form" action="" id="frmRegistrarCompra">
             <h2>Registrar Compra</h2>
             <div>
                 <label for="id_producto">Producto</label>
@@ -115,7 +115,7 @@
                     <option value="">-- Seleccione trabajador --</option>
                 </select>
             </div>
-            <button type="button" class="button" onclick="registrar_compras();">Enviar</button>
+            <button type="button" class="button" onclick="registrar_compra();">Enviar</button>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         </form>
     </div>

@@ -26,6 +26,16 @@ class RegistrarComprasModel {
 
         return $arrRespuesta;
     }
+    public function eliminarCompra($id){
+        $sql = $this->conexion->query("CALL eliminarCompras('{$id}')");
+        $sql = $sql->fetch_object();
+        return $sql;
+
+      }
+
+
+
+
 }
 
 

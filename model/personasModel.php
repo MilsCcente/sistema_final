@@ -11,7 +11,7 @@ class personasModel
     }
     public function registrarPersonas($nro_identidad, $razon_social, $telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol, $password)
     {
-        $sql = $this->conexion->query("CALL insertPersonas(
+        $sql = $this->conexion->query("CALL insertPersona(
             '{$nro_identidad}', '{$razon_social}', '{$telefono}', '{$correo}', 
             '{$departamento}', '{$provincia}', '{$distrito}', '{$cod_postal}', 
             '{$direccion}', '{$rol}', '{$password}'

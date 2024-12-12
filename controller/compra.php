@@ -7,7 +7,7 @@ $tipo = $_REQUEST['tipo'];
 
 $objCompra = new RegistrarComprasModel();
 $objPersona = new personasModel();
-$objProducto = new  ListarProductoModel();
+$objProducto = new  ProductoModel();
 
 if ($tipo == "listar") {
     $arr_Respuestas = array('status' => false, 'contenido' => '');
@@ -18,7 +18,7 @@ if ($tipo == "listar") {
         for ($i = 0; $i < count($arr_compra); $i++) {
 
             $id_producto = $arr_compra[$i]->id_producto;
-            $r_producto = $objProducto->obtener_producto($id_producto);
+            $r_producto = $objProducto->obtener_product($id_producto);
             $arr_compra[$i]->producto = $r_producto;
 
             $id_trabajador = $arr_compra[$i]->id_trabajador; // Obtén el ID del proveedor relacionado con el producto
@@ -28,8 +28,10 @@ if ($tipo == "listar") {
 
             $id_compra = $arr_compra[$i]->id;
             
-            $opciones = '
-            <a href="" class="btn btn-success"><i class="fa fa-pencil"></i></a>';
+            $opciones ='
+            <a href="'. BASE_URL.'editar-producto/'.$id_compra.'" class="btn btn-warning" >Editar<a/>
+            <button onclick="eliminarcompra('.$id_compra.');" class="btn btn-danger">Eliminar</button>';
+
             $arr_compra[$i]->options = $opciones;
         }
         $arr_Respuestas['status'] = true;
@@ -62,5 +64,25 @@ if ($tipo == "registrar") {
         }
         echo json_encode($arr_Respuestas);
     }
+}
+
+
+
+
+
+
+
+
+if ($tipo =="eliminar"){
+    $id_compra = $_POST['id_compra'];
+    $arr_Respuesta = $objCompra->eliminarCompra($id_compra);
+    //print_r($arr_Respuesta);
+    if (empty($arr_Respuesta)){
+        $response = array('status' => false);
+
+    }else{
+        $response = array('status' => true);
+    }
+    echo json_encode($response);
 }
 ?>

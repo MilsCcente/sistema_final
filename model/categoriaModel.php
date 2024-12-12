@@ -26,6 +26,20 @@ class categoriaModel
         return $objeto;
 
     }
+    public function registrarCategorias($nombre,$detalle){
+        $sql = $this->conexion->query("CALL insertCategoria('{$nombre}','{$detalle}')");
+    
+               $sql = $sql->fetch_object() ;
+               return $sql;                                         
+        }
+
+        public function eliminarCategoria($id){
+            $sql = $this->conexion->query("CALL eliminarCategoria('{$id}')");
+            $sql = $sql->fetch_object();
+            return $sql;
+    
+          }
+    
 }
 
 class RCategoriaModel{
@@ -35,17 +49,12 @@ class RCategoriaModel{
         $this->conexion = new Conexion();
         $this->conexion = $this->conexion->connect();
     }
-    public function registrarCategorias($nombre,$detalle){
-    $sql = $this->conexion->query("CALL insertCategorias('{$nombre}','{$detalle}')");
+    
+   public function ver_categoria($id){
+       $respuesta = $this->conexion->query("SELECT * FROM categoria WHERE id = '$id'");
+     $objeto = $respuesta->fetch_object();
+        return $objeto;
 
-           $sql = $sql->fetch_object() ;
-           return $sql;                                         
     }
-   // public function ver_categoria($id){
-     //   $respuesta = $this->conexion->query("SELECT * FROM categoria WHERE id = '$id'");
-       // $objeto = $respuesta->fetch_object();
-        //return $objeto;
-
-    //}
 }
 ?>

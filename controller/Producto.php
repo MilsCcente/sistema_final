@@ -30,11 +30,10 @@ if ($tipo == "listar") {
             //localhost/eliminar-producto/4
 
             $id_producto = $arr_productos[$i]->id;
-            $producto = $arr_productos[$i]->nombre;
+        
             //eliminar producto(1)
-            $opciones ='
-            <a href="'. BASE_URL.'editar-producto/'.$id_producto.'" >Editar<a/>
-            <button onclick="eliminarProducto('.$idProducto.');">Eliminar</button>';
+            $opciones ='<a href="'.BASE_URL.'editar-categoria/'.$id_producto.'" class="btn btn-warning">Editar<a/>
+            <button onclick ="eliminarProducto('.$id_producto.');" class="btn btn-danger">Eliminar</button>';
            
             $arr_productos[$i]->options =  $opciones;
             

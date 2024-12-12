@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Formulario de Registro de Persona</title>
     <style>
@@ -6,26 +8,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 250vh;
-            background: linear-gradient(135deg, #6dd5fa, #2980b9);
-            
+
         }
 
         /* Estilos del formulario */
         .form {
             background-color: #ffffff;
             padding: 30px;
-            
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
             width: 50%;
-            max-width: 500px;
+            max-width: 800px;
             font-family: Arial, sans-serif;
-            
         }
 
         .form div {
             margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .form-col {
+            flex: 1;
+            min-width: 300px;
         }
 
         /* Estilo del título */
@@ -97,69 +106,66 @@
     </style>
 </head>
 <body>
+    
     <div class="form-container">
         <form class="form" action="" id="RegistrarPersona">
             <h2>Registrar Persona</h2>
-            
-            <div>
-                <label for="nro_identidad">Número de Identidad</label>
-                <input type="text" id="nro_identidad" name="nro_identidad" placeholder="Número de Identidad" required>
+            <div class="form-row">
+                <div class="form-col">
+                    <div>
+                        <label for="nro_identidad">Número de Identidad</label>
+                        <input type="text" id="nro_identidad" name="nro_identidad" placeholder="Número de Identidad" required>
+                    </div>
+                    <div>
+                        <label for="razon_social">Razón Social</label>
+                        <input type="text" id="razon_social" name="razon_social" placeholder="Razón Social" required>
+                    </div>
+                    <div>
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required>
+                    </div>
+                    <div>
+                        <label for="correo">Correo</label>
+                        <input type="text" id="correo" name="correo" placeholder="Correo" required>
+                    </div>
+                    <div>
+                        <label for="departamento">Departamento</label>
+                        <input type="text" id="departamento" name="departamento" placeholder="Departamento" required>
+                    </div>
+                    <div>
+                        <label for="provincia">Provincia</label>
+                        <input type="text" id="provincia" name="provincia" placeholder="Provincia" required>
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div>
+                        <label for="distrito">Distrito</label>
+                        <input type="text" id="distrito" name="distrito" placeholder="Distrito" required>
+                    </div>
+                    <div>
+                        <label for="cod_postal">Código Postal</label>
+                        <input type="text" id="cod_postal" name="cod_postal" placeholder="Código Postal" required>
+                    </div>
+                    <div>
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Dirección" required>
+                    </div>
+                    <div>
+                        <label for="rol">Rol</label>
+                        <input type="text" id="rol" name="rol" placeholder="Rol" required>
+                    </div>
+                    <div>
+                        <label for="password">Contraseña</label>
+                        <input type="text" id="password" name="password" placeholder="Contraseña" required>
+                    </div>
+                    
+                </div>
             </div>
-            <div>
-                <label for="razon_social">Razón Social</label>
-                <input type="text" id="razon_social" name="razon_social" placeholder="Razón Social" required>
-            </div>
-            <div>
-                <label for="telefono">Teléfono</label>
-                <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required>
-            </div>
-            <div>
-                <label for="correo">Correo</label>
-                <input type="text" id="correo" name="correo" placeholder="Correo" required>
-            </div>
-            <div>
-                <label for="departamento">Departamento</label>
-                <input type="text" id="departamento" name="departamento" placeholder="Departamento" required>
-            </div>
-            <div>
-                <label for="provincia">Provincia</label>
-                <input type="text" id="provincia" name="provincia" placeholder="Provincia" required>
-            </div>
-            <div>
-                <label for="distrito">Distrito</label>
-                <input type="text" id="distrito" name="distrito" placeholder="Distrito" required>
-            </div>
-            <div>
-                <label for="cod_postal">Código Postal</label>
-                <input type="text" id="cod_postal" name="cod_postal" placeholder="Código Postal" required>
-            </div>
-            <div>
-                <label for="direccion">Dirección</label>
-                <input type="text" id="direccion" name="direccion" placeholder="Dirección" required>
-            </div>
-            <div>
-                <label for="rol">Rol</label>
-                <input type="text" id="rol" name="rol" placeholder="Rol" required>
-            </div>
-            <div>
-                <label for="password">Contraseña</label>
-                <input type="text" id="password" name="password" placeholder="Contraseña" required>
-            </div>
-            <div>
-                <label for="estado">Estado</label>
-                <input type="text" id="estado" name="estado" placeholder="Estado" required>
-            </div>
-            <div>
-                <label for="fecha_reg">Fecha de Registro</label>
-                <input type="date" id="fecha_reg" name="fecha_reg" required>
-            </div>
-            
             <button type="button" class="button" onclick="registrar_personas();">Enviar</button>
             <p>Complete todos los campos antes de enviar.</p>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         </form>
     </div>
     <script src="<?php echo BASE_URL ?>views/js/functions_personas.js"></script>
-    
 </body>
 </html>
