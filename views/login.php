@@ -99,6 +99,9 @@
                 </div>
                 <!-- ojo-->
                 <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+
+                <h3><p>usuario: 74356670</p></h3>
+                <h3> <p>password: 74356670</p></h3>
             </form>
         </div>
     </div>
